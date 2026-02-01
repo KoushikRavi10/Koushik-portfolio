@@ -295,92 +295,128 @@
       {
         id: 'tpms-energy',
         title: 'Hierarchical TPMS Structures — Energy Absorption Optimisation',
-        subtitle: 'University project • design + analysis workflow',
+        subtitle: 'RMIT final-year project • design optimisation + simulation mindset',
         year: '2024',
-        role: 'Research / design engineer (solo/lead)',
-        tools: ['CAD', 'FEA', 'Design optimisation'],
+        role: 'Project lead (design + analysis + documentation)',
+        tools: ['CAD', 'FEA workflow', 'Design optimisation', 'Data interpretation'],
         tags: ['FEA', 'Structures', 'Research'],
-        thumbnailText: 'Add FEA / CAD image',
+        thumbnailText: 'Drop in: FEA result / CAD render',
         bullets: [
-          'Defined performance goal (energy absorption) and compared candidate geometries.',
-          'Iterated design parameters and evaluated response to loading conditions.',
-          'Documented assumptions, boundary conditions, and design trade-offs.',
-          'Outcome: improved energy absorption through hierarchical structuring.'
+          'Set a clear performance objective (energy absorption) and compared candidate TPMS-based geometries.',
+          'Defined assumptions and boundary conditions, then iterated geometry parameters to evaluate trends.',
+          'Communicated trade-offs (strength vs weight vs manufacturability) and documented a repeatable workflow.',
+          'Outcome: identified a higher-performing hierarchical configuration and the design levers that drove the result.'
         ],
         links: [
           // { label: 'Report (PDF)', url: 'assets/tpms-report.pdf' },
-          // { label: 'Images', url: 'assets/tpms-gallery.html' }
+          // { label: 'Gallery', url: 'assets/tpms-gallery.html' }
         ]
       },
       {
         id: 'solar-curing',
-        title: 'Solar-Powered 3D Model Curing Efficiency Improvement',
-        subtitle: 'Process improvement • prototyping mindset',
+        title: 'Solar-Powered UV Curing — Process Efficiency Improvement',
+        subtitle: 'Hands-on experiment • sustainable workflow improvement',
         year: '2024',
         role: 'Designer / experimenter',
-        tools: ['Prototyping', 'Testing', 'Iteration'],
+        tools: ['Prototyping', 'Testing', 'Iteration', 'Practical problem solving'],
         tags: ['Prototyping', 'Sustainability'],
-        thumbnailText: 'Add setup photo',
+        thumbnailText: 'Drop in: setup photo / before-after',
         bullets: [
-          'Replaced electrical UV curing with solar approach to reduce energy use.',
-          'Tested curing consistency and identified practical constraints.',
-          'Improved workflow efficiency with a simple, repeatable method.'
+          'Explored a solar-powered curing approach to reduce reliance on electrical UV curing.',
+          'Tested repeatability and consistency, then refined the setup for a more reliable process.',
+          'Captured learnings and constraints (weather dependence, exposure control, part positioning).'
         ],
         links: []
       },
       {
-        id: 'fpv-drone',
-        title: 'FPV Drone Builds — Integration of Airframe, Electronics & Control',
-        subtitle: 'Personal project • systems integration',
+        id: 'aerial-drone',
+        title: 'Aerial Photography Quadcopter — Design & Build',
+        subtitle: 'Personal build • mechanical design + integration',
         year: '2025–2026',
         role: 'Builder / integrator',
-        tools: ['CAD', '3D printing', 'Betaflight', 'Arduino/ESP32'],
-        tags: ['Drone', 'Electronics', 'Control'],
-        thumbnailText: 'Add drone photo',
+        tools: ['CAD', '3D printing', 'Electronics integration', 'Testing & tuning'],
+        tags: ['Drone', 'Integration', 'CAD'],
+        thumbnailText: 'Drop in: finished drone photo',
         bullets: [
-          'Built FPV platforms and tuned flight behaviour with Betaflight.',
-          'Explored AUX-switch control concepts for higher-level modes (e.g., hover assist).',
-          'Worked cross-platform (Windows + WSL/Linux) for tooling and workflows.',
-          'Emphasis on iterative testing, troubleshooting, and documentation.'
+          'Designed and assembled a quadcopter platform for stable aerial photography.',
+          'Integrated mechanical structure, electronics packaging, and iterative improvements from test flights.',
+          'Documented build decisions so the platform is repeatable and maintainable.'
         ],
         links: [
           // { label: 'Build notes', url: 'https://...' },
-          // { label: 'Code', url: 'https://github.com/...' }
+          // { label: 'STL files', url: 'https://...' }
+        ]
+      },
+      {
+        id: 'fpv-7inch',
+        title: '7-inch FPV Drone — Setup, Tuning & Reliability Iteration',
+        subtitle: 'Personal project • real-world troubleshooting + performance tuning',
+        year: '2025–2026',
+        role: 'Builder / tester',
+        tools: ['Betaflight', 'Flight tuning', 'Hardware debugging', 'Documentation'],
+        tags: ['Drone', 'Control', 'Testing'],
+        thumbnailText: 'Drop in: blackbox plot / flight footage still',
+        bullets: [
+          'Built and tuned an FPV platform with an emphasis on stable behaviour and reliability.',
+          'Used iterative test flights to diagnose issues and validate changes (hardware + configuration).',
+          'Kept clear notes to accelerate debugging and make changes reproducible.'
+        ],
+        links: [
+          // { label: 'Video', url: 'https://...' }
+        ]
+      },
+      {
+        id: 'fc-takeover',
+        title: 'ESP32 / Raspberry Pi “Control Takeover” Concept (AUX Switch Mode)',
+        subtitle: 'Controls concept • higher-level assist modes on demand',
+        year: '2025–2026',
+        role: 'Concept + prototyping plan',
+        tools: ['Arduino/ESP32', 'RC signal logic', 'Systems thinking'],
+        tags: ['Automation', 'Control', 'Drone'],
+        thumbnailText: 'Drop in: block diagram',
+        bullets: [
+          'Designed a concept to enable a higher-level control assist (e.g., hover/hold) toggled via an AUX switch.',
+          'Considered signal routing, safety interlocks, and how to hand control back cleanly to the pilot.',
+          'Planned an incremental prototype path: bench test → limited flight mode → expanded features.'
+        ],
+        links: [
+          // { label: 'Code (WIP)', url: 'https://github.com/...' }
         ]
       },
       {
         id: 'prop-cfd',
-        title: '5-inch Propeller CFD Study (Ansys Fluent)',
-        subtitle: 'Analysis project • mesh → solver setup → interpretation',
+        title: '5-inch 3-Blade Propeller — CFD Study (Ansys Fluent)',
+        subtitle: 'CFD workflow • meshing → solver setup → interpretation',
         year: '2025',
         role: 'CFD analyst',
-        tools: ['Ansys Fluent', 'Meshing', 'Post-processing'],
-        tags: ['CFD', 'Aero'],
-        thumbnailText: 'Add pressure/velocity plot',
+        tools: ['Ansys Fluent', 'Meshing strategy', 'Post-processing', 'Engineering judgement'],
+        tags: ['CFD', 'Aero', 'Analysis'],
+        thumbnailText: 'Drop in: pressure/velocity plot',
         bullets: [
-          'Set up a CFD workflow to evaluate performance trends and flow features.',
-          'Focused on mesh quality, boundary conditions, and stable convergence.',
-          'Interpreted results with engineering judgement (limitations + next steps).'
+          'Built a CFD workflow to study flow features and performance trends around the propeller.',
+          'Focused on mesh quality, boundary conditions, convergence behaviour, and result sanity-checks.',
+          'Summarised limitations and next steps for better validation (e.g., experiment correlation).'
         ],
         links: []
       },
       {
         id: 'compressor',
-        title: 'Compressor Assembly Optimisation (Internship)',
-        subtitle: 'Industry experience • practical constraints',
+        title: 'Compressor Assembly Optimisation (ELGI Equipment Internship)',
+        subtitle: 'Industry project • practical improvements under constraints',
         year: '2025',
-        role: 'Engineering intern',
-        tools: ['CAD', 'DFM', 'Documentation'],
-        tags: ['Manufacturing', 'Design'],
-        thumbnailText: 'Add assembly image',
+        role: 'Engineering intern (analysis + improvement proposals)',
+        tools: ['CAD', 'DFM thinking', 'Documentation', 'Stakeholder communication'],
+        tags: ['Manufacturing', 'Design', 'Industry'],
+        thumbnailText: 'Drop in: assembly / drawing snippet',
         bullets: [
-          'Assessed assembly opportunities and proposed improvements for efficiency.',
-          'Balanced design intent with manufacturability and real-world constraints.',
-          'Communicated changes through drawings/notes and stakeholder discussion.'
+          'Reviewed compressor assembly steps to identify opportunities to improve efficiency and reduce friction.',
+          'Balanced design intent with manufacturability, tooling realities, and operational constraints.',
+          'Communicated proposed changes clearly for review and implementation.'
         ],
         links: []
       }
     ];
+
 
     // =====================
     // 2) UI LOGIC (no need to edit)
