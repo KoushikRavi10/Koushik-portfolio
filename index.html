@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koushik Ravi — Engineering Portfolio</title>
+  <meta name="description" content="Mechanical / Aerospace engineering portfolio — CAD, CFD/FEA, prototyping, drones, and product development." />
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#111827;
+      --muted:#9ca3af;
+      --text:#e5e7eb;
+      --accent:#60a5fa;
+      --accent2:#34d399;
+      --border:rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:radial-gradient(1200px 600px at 15% 0%, rgba(96,165,250,.18), transparent 55%), radial-gradient(900px 600px at 85% 20%, rgba(52,211,153,.12), transparent 60%), var(--bg); color:var(--text);}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 72px;}
+
+    /* Header */
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; position:sticky; top:0; backdrop-filter: blur(10px); background:rgba(11,15,20,.65); border-bottom:1px solid var(--border); z-index:50;}
+    header .wrap{padding:14px 18px; display:flex; align-items:center; justify-content:space-between; width:100%;}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .badge{width:38px; height:38px; border-radius:14px; background:linear-gradient(135deg, rgba(96,165,250,.95), rgba(52,211,153,.9)); box-shadow:var(--shadow);}
+    .brand h1{font-size:15px; margin:0; letter-spacing:.2px;}
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+
+    nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .navlink{padding:8px 10px; border:1px solid transparent; border-radius:12px; font-size:13px; color:var(--muted)}
+    .navlink:hover{border-color:var(--border); color:var(--text)}
+
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:rgba(17,24,39,.6); box-shadow: 0 8px 20px rgba(0,0,0,.22); font-size:13px;}
+    .btn:hover{border-color:rgba(96,165,250,.45)}
+    .btn.primary{background:linear-gradient(135deg, rgba(96,165,250,.25), rgba(52,211,153,.18)); border-color:rgba(96,165,250,.35)}
+
+    /* Hero */
+    .hero{padding:42px 0 18px;}
+    .hero .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch;}
+    .hero h2{font-size:36px; line-height:1.08; margin:0 0 10px; letter-spacing:-.6px;}
+    .hero p{margin:0; color:var(--muted); font-size:15px; line-height:1.65; max-width:64ch}
+
+    .card{background:rgba(17,24,39,.72); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow);}
+    .heroCard{padding:18px;}
+    .heroMeta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .pill{font-size:12px; padding:7px 10px; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:rgba(0,0,0,.15)}
+
+    .sideCard{padding:18px; display:flex; flex-direction:column; justify-content:space-between; gap:14px;}
+    .sideCard h3{margin:0; font-size:14px; color:var(--text)}
+    .sideCard .small{font-size:12.5px; color:var(--muted); line-height:1.6}
+    .statGrid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+    .stat{padding:12px; border-radius:16px; border:1px solid var(--border); background:rgba(0,0,0,.16)}
+    .stat b{display:block; font-size:16px; margin-bottom:4px}
+    .stat span{font-size:12px; color:var(--muted)}
+
+    /* Controls */
+    .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:26px 0 14px;}
+    .search{flex:1; min-width:210px; padding:12px 14px; border-radius:16px; border:1px solid var(--border); background:rgba(0,0,0,.22); color:var(--text); outline:none;}
+    .search::placeholder{color:rgba(156,163,175,.75)}
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{cursor:pointer; user-select:none; padding:10px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(17,24,39,.55); font-size:12.5px; color:var(--muted)}
+    .chip.active{color:var(--text); border-color:rgba(96,165,250,.55); background:rgba(96,165,250,.14)}
+
+    /* Projects */
+    .projects{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
+    .proj{padding:14px; display:flex; flex-direction:column; gap:10px; cursor:pointer; transition: transform .15s ease, border-color .15s ease;}
+    .proj:hover{transform: translateY(-2px); border-color:rgba(96,165,250,.45)}
+    .thumb{height:156px; border-radius:16px; border:1px solid var(--border); background:linear-gradient(135deg, rgba(96,165,250,.16), rgba(52,211,153,.10)); display:flex; align-items:center; justify-content:center; color:rgba(229,231,235,.75); font-size:13px;}
+    .proj h4{margin:0; font-size:15px; letter-spacing:-.2px;}
+    .proj p{margin:0; font-size:13px; color:var(--muted); line-height:1.55}
+    .tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:auto}
+    .tag{font-size:11.5px; padding:6px 8px; border-radius:999px; border:1px solid var(--border); color:rgba(229,231,235,.75); background:rgba(0,0,0,.14)}
+
+    /* Sections */
+    section{scroll-margin-top:84px;}
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin:32px 0 10px;}
+    .sectionTitle h3{margin:0; font-size:18px; letter-spacing:-.3px}
+    .sectionTitle p{margin:0; font-size:13px; color:var(--muted)}
+
+    /* About */
+    .about{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    .about .card{padding:18px;}
+    .about h4{margin:0 0 8px; font-size:14px}
+    .about ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.7; font-size:13.5px}
+
+    /* Footer */
+    footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12.5px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    /* Modal */
+    .modalBackdrop{position:fixed; inset:0; background:rgba(0,0,0,.62); display:none; align-items:center; justify-content:center; padding:18px; z-index:100;}
+    .modalBackdrop.open{display:flex;}
+    .modal{width:min(920px, 100%); max-height:88vh; overflow:auto;}
+    .modalHeader{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:16px 16px 0;}
+    .modalHeader h3{margin:0; font-size:18px;}
+    .close{cursor:pointer; border:1px solid var(--border); background:rgba(0,0,0,.25); color:var(--text); border-radius:14px; padding:8px 10px;}
+    .modalBody{padding:16px; display:grid; grid-template-columns: 1fr 1fr; gap:14px;}
+    .modalBody .block{padding:14px; border-radius:16px; border:1px solid var(--border); background:rgba(0,0,0,.16)}
+    .kv{display:grid; grid-template-columns: 150px 1fr; gap:8px 12px; font-size:13px; color:var(--muted);}
+    .kv b{color:var(--text); font-weight:600}
+    .bullets{margin:0; padding-left:18px; color:var(--muted); line-height:1.75; font-size:13.5px}
+    .links{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .grid{grid-template-columns: 1fr;}
+      .projects{grid-template-columns: repeat(2,1fr)}
+      .about{grid-template-columns:1fr}
+      .modalBody{grid-template-columns:1fr}
+      .kv{grid-template-columns: 120px 1fr;}
+    }
+    @media (max-width: 560px){
+      .projects{grid-template-columns: 1fr}
+      .hero h2{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Home">
+        <div class="badge" aria-hidden="true"></div>
+        <div>
+          <h1>Koushik Ravi</h1>
+          <p>Mechanical / Aerospace Engineer • CAD • CFD/FEA • Prototyping</p>
+        </div>
+      </a>
+      <nav>
+        <a class="navlink" href="#projects">Projects</a>
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="grid">
+        <div class="card heroCard">
+          <h2>Designs & projects — from concepts to CAD, analysis, and prototypes.</h2>
+          <p>
+            I build practical engineering solutions and document the process: requirements → trade-offs → CAD → simulation/testing → iteration.
+            This site highlights selected work across drones, mechanical design, and research-style problem solving.
+          </p>
+          <div class="heroMeta">
+            <span class="pill">SolidWorks / CAD</span>
+            <span class="pill">CFD / FEA</span>
+            <span class="pill">Manufacturing & prototyping</span>
+            <span class="pill">Automation (Arduino/ESP32)</span>
+          </div>
+          <div class="links" style="margin-top:14px">
+            <a class="btn" href="#projects">Browse projects</a>
+            <!-- Replace with your real links -->
+            <a class="btn" href="#" onclick="alert('Add your resume PDF link here'); return false;">Resume (PDF)</a>
+            <a class="btn" href="#" onclick="alert('Add your LinkedIn link here'); return false;">LinkedIn</a>
+            <a class="btn" href="#" onclick="alert('Add your GitHub link here (optional)'); return false;">GitHub</a>
+          </div>
+        </div>
+
+        <div class="card sideCard">
+          <div>
+            <h3>What I’m optimising for</h3>
+            <p class="small">Clear engineering communication. Each project has context, constraints, the approach I took, and what changed after testing.</p>
+          </div>
+          <div class="statGrid" aria-label="quick stats">
+            <div class="stat"><b>4–6</b><span>featured projects</span></div>
+            <div class="stat"><b>1 page</b><span>fast scan per project</span></div>
+            <div class="stat"><b>Process</b><span>over pretty renders</span></div>
+            <div class="stat"><b>Impact</b><span>what changed & why</span></div>
+          </div>
+          <div>
+            <p class="small"><b style="color:var(--text)">Tip:</b> replace the placeholder thumbnails with your CAD renders/screenshots for a big upgrade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="sectionTitle">
+        <div>
+          <h3>Projects</h3>
+          <p>Click any project for details (problem, constraints, approach, outcomes).</p>
+        </div>
+        <p id="count" aria-live="polite"></p>
+      </div>
+
+      <div class="controls">
+        <input id="search" class="search" placeholder="Search projects (e.g., CFD, SolidWorks, drone, TPMS)…" />
+        <div class="chips" id="chips" aria-label="filters"></div>
+      </div>
+
+      <div class="projects" id="grid" aria-label="project grid"></div>
+    </section>
+
+    <section id="about">
+      <div class="sectionTitle">
+        <div>
+          <h3>About</h3>
+          <p>A short snapshot — keep it skimmable.</p>
+        </div>
+      </div>
+
+      <div class="about">
+        <div class="card">
+          <h4>Profile</h4>
+          <ul>
+            <li>Master’s in Aerospace Engineering.</li>
+            <li>Hands-on builder: drones, electronics integration, prototyping.</li>
+            <li>Strong interest in CFD/FEA because it makes physics visible and improves design decisions.</li>
+            <li>Comfortable bridging analysis and manufacturing constraints (DFM, drawings, BOMs).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Core tools</h4>
+          <ul>
+            <li>CAD: SolidWorks (assemblies, drawings, BOM).</li>
+            <li>Analysis: CFD/FEA workflows (mesh → solver settings → validation mindset).</li>
+            <li>Prototyping: 3D printing, basic workshop work, iterative testing.</li>
+            <li>Automation: Arduino / ESP32 (learning-focused, applied to drone control).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sectionTitle">
+        <div>
+          <h3>Contact</h3>
+          <p>Replace placeholders with your real details.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <p style="margin:0; color:var(--muted); line-height:1.7">
+          Email: <a href="mailto:your.email@example.com" style="color:var(--text); text-decoration:underline">your.email@example.com</a><br/>
+          LinkedIn: <a href="#" style="color:var(--text); text-decoration:underline" onclick="alert('Paste your LinkedIn URL in the HTML'); return false;">Add your profile link</a><br/>
+          Location: Melbourne, Australia
+        </p>
+        <div class="links">
+          <a class="btn primary" href="mailto:your.email@example.com">Email me</a>
+          <a class="btn" href="#" onclick="alert('Add a Calendly link if you use one'); return false;">Schedule a chat</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> Koushik Ravi</span>
+      <span>Built as a simple static site — easy to host on GitHub Pages.</span>
+    </footer>
+  </main>
+
+  <!-- Modal -->
+  <div class="modalBackdrop" id="backdrop" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="card modal">
+      <div class="modalHeader">
+        <div>
+          <h3 id="mTitle">Project title</h3>
+          <p id="mSubtitle" style="margin:4px 0 0; color:var(--muted); font-size:13px"></p>
+        </div>
+        <button class="close" id="closeBtn" aria-label="Close">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="block">
+          <div class="kv" id="mKv"></div>
+          <div class="links" id="mLinks"></div>
+        </div>
+        <div class="block">
+          <h4 style="margin:0 0 8px; font-size:13px; color:var(--text)">Key points</h4>
+          <ul class="bullets" id="mBullets"></ul>
+        </div>
+        <div class="block" style="grid-column:1/-1">
+          <h4 style="margin:0 0 8px; font-size:13px; color:var(--text)">What I’d show in this section</h4>
+          <ul class="bullets">
+            <li>1–2 hero images (CAD render / prototype / test setup).</li>
+            <li>A small diagram: inputs → method → outputs (CFD/FEA/test results).</li>
+            <li>One slide of iteration: v1 vs v2 and why it changed.</li>
+          </ul>
+          <p style="margin:10px 0 0; color:var(--muted); font-size:13px; line-height:1.6">
+            Swap the placeholder thumbnail on the card with a real screenshot/renderer and add any files (PDF report, GitHub repo, videos).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =====================
+    // 1) EDIT YOUR PROJECTS HERE
+    // =====================
+    const projects = [
+      {
+        id: 'tpms-energy',
+        title: 'Hierarchical TPMS Structures — Energy Absorption Optimisation',
+        subtitle: 'University project • design + analysis workflow',
+        year: '2024',
+        role: 'Research / design engineer (solo/lead)',
+        tools: ['CAD', 'FEA', 'Design optimisation'],
+        tags: ['FEA', 'Structures', 'Research'],
+        thumbnailText: 'Add FEA / CAD image',
+        bullets: [
+          'Defined performance goal (energy absorption) and compared candidate geometries.',
+          'Iterated design parameters and evaluated response to loading conditions.',
+          'Documented assumptions, boundary conditions, and design trade-offs.',
+          'Outcome: improved energy absorption through hierarchical structuring.'
+        ],
+        links: [
+          // { label: 'Report (PDF)', url: 'assets/tpms-report.pdf' },
+          // { label: 'Images', url: 'assets/tpms-gallery.html' }
+        ]
+      },
+      {
+        id: 'solar-curing',
+        title: 'Solar-Powered 3D Model Curing Efficiency Improvement',
+        subtitle: 'Process improvement • prototyping mindset',
+        year: '2024',
+        role: 'Designer / experimenter',
+        tools: ['Prototyping', 'Testing', 'Iteration'],
+        tags: ['Prototyping', 'Sustainability'],
+        thumbnailText: 'Add setup photo',
+        bullets: [
+          'Replaced electrical UV curing with solar approach to reduce energy use.',
+          'Tested curing consistency and identified practical constraints.',
+          'Improved workflow efficiency with a simple, repeatable method.'
+        ],
+        links: []
+      },
+      {
+        id: 'fpv-drone',
+        title: 'FPV Drone Builds — Integration of Airframe, Electronics & Control',
+        subtitle: 'Personal project • systems integration',
+        year: '2025–2026',
+        role: 'Builder / integrator',
+        tools: ['CAD', '3D printing', 'Betaflight', 'Arduino/ESP32'],
+        tags: ['Drone', 'Electronics', 'Control'],
+        thumbnailText: 'Add drone photo',
+        bullets: [
+          'Built FPV platforms and tuned flight behaviour with Betaflight.',
+          'Explored AUX-switch control concepts for higher-level modes (e.g., hover assist).',
+          'Worked cross-platform (Windows + WSL/Linux) for tooling and workflows.',
+          'Emphasis on iterative testing, troubleshooting, and documentation.'
+        ],
+        links: [
+          // { label: 'Build notes', url: 'https://...' },
+          // { label: 'Code', url: 'https://github.com/...' }
+        ]
+      },
+      {
+        id: 'prop-cfd',
+        title: '5-inch Propeller CFD Study (Ansys Fluent)',
+        subtitle: 'Analysis project • mesh → solver setup → interpretation',
+        year: '2025',
+        role: 'CFD analyst',
+        tools: ['Ansys Fluent', 'Meshing', 'Post-processing'],
+        tags: ['CFD', 'Aero'],
+        thumbnailText: 'Add pressure/velocity plot',
+        bullets: [
+          'Set up a CFD workflow to evaluate performance trends and flow features.',
+          'Focused on mesh quality, boundary conditions, and stable convergence.',
+          'Interpreted results with engineering judgement (limitations + next steps).'
+        ],
+        links: []
+      },
+      {
+        id: 'compressor',
+        title: 'Compressor Assembly Optimisation (Internship)',
+        subtitle: 'Industry experience • practical constraints',
+        year: '2025',
+        role: 'Engineering intern',
+        tools: ['CAD', 'DFM', 'Documentation'],
+        tags: ['Manufacturing', 'Design'],
+        thumbnailText: 'Add assembly image',
+        bullets: [
+          'Assessed assembly opportunities and proposed improvements for efficiency.',
+          'Balanced design intent with manufacturability and real-world constraints.',
+          'Communicated changes through drawings/notes and stakeholder discussion.'
+        ],
+        links: []
+      }
+    ];
+
+    // =====================
+    // 2) UI LOGIC (no need to edit)
+    // =====================
+    const grid = document.getElementById('grid');
+    const search = document.getElementById('search');
+    const chips = document.getElementById('chips');
+    const count = document.getElementById('count');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
+    const tagState = { active: 'All' };
+
+    function chip(label){
+      const el = document.createElement('div');
+      el.className = 'chip' + (tagState.active === label ? ' active' : '');
+      el.textContent = label;
+      el.onclick = () => { tagState.active = label; render(); renderChips(); };
+      return el;
+    }
+
+    function renderChips(){
+      chips.innerHTML = '';
+      chips.appendChild(chip('All'));
+      allTags.forEach(t => chips.appendChild(chip(t)));
+    }
+
+    function matches(p, q){
+      if(!q) return true;
+      const s = (p.title + ' ' + p.subtitle + ' ' + p.tools.join(' ') + ' ' + p.tags.join(' ')).toLowerCase();
+      return s.includes(q.toLowerCase());
+    }
+
+    function filterProjects(){
+      const q = search.value.trim();
+      return projects.filter(p => {
+        const okTag = (tagState.active === 'All') || p.tags.includes(tagState.active);
+        return okTag && matches(p, q);
+      });
+    }
+
+    function card(p){
+      const el = document.createElement('div');
+      el.className = 'card proj';
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('role', 'button');
+      el.setAttribute('aria-label', `Open project: ${p.title}`);
+      el.onclick = () => openModal(p);
+      el.onkeydown = (e) => { if(e.key === 'Enter' || e.key === ' ') openModal(p); };
+
+      el.innerHTML = `
+        <div class="thumb">${p.thumbnailText || 'Add image'}</div>
+        <h4>${p.title}</h4>
+        <p>${p.subtitle}</p>
+        <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      `;
+      return el;
+    }
+
+    function render(){
+      const items = filterProjects();
+      grid.innerHTML = '';
+      items.forEach(p => grid.appendChild(card(p)));
+      count.textContent = `${items.length} shown`;
+    }
+
+    // Modal
+    const backdrop = document.getElementById('backdrop');
+    const closeBtn = document.getElementById('closeBtn');
+    const mTitle = document.getElementById('mTitle');
+    const mSubtitle = document.getElementById('mSubtitle');
+    const mKv = document.getElementById('mKv');
+    const mBullets = document.getElementById('mBullets');
+    const mLinks = document.getElementById('mLinks');
+
+    function openModal(p){
+      mTitle.textContent = p.title;
+      mSubtitle.textContent = p.subtitle;
+
+      const rows = [
+        ['Year', p.year],
+        ['Role', p.role],
+        ['Tools', (p.tools || []).join(', ')],
+        ['Tags', (p.tags || []).join(', ')],
+      ];
+      mKv.innerHTML = rows.map(([k,v]) => `<b>${k}</b><div>${v || '—'}</div>`).join('');
+
+      mBullets.innerHTML = (p.bullets || []).map(b => `<li>${b}</li>`).join('');
+
+      mLinks.innerHTML = '';
+      if(p.links && p.links.length){
+        p.links.forEach(l => {
+          const a = document.createElement('a');
+          a.className = 'btn';
+          a.href = l.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = l.label;
+          mLinks.appendChild(a);
+        });
+      }
+
+      backdrop.classList.add('open');
+    }
+
+    function closeModal(){
+      backdrop.classList.remove('open');
+    }
+
+    closeBtn.onclick = closeModal;
+    backdrop.onclick = (e) => { if(e.target === backdrop) closeModal(); };
+    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+    search.addEventListener('input', render);
+
+    renderChips();
+    render();
+  </script>
+</body>
+</html>
